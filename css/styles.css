@@ -1,0 +1,747 @@
+
+/* Define CSS variable at the top of the stylesheet */
+:root {
+    --primary-color: #0c0269; 
+    --text-emphasis: #ff6347;
+    --button-color: color(display-p3 0.1 0.76 0.1); /* A cool, vibrant green */
+    --mix-color: color(display-p3 0.9 0.3 0.9); 
+    --background-color: #fff;
+    --text-color: #000;
+    --link-color: #204ddf;
+}
+
+/* For Contact form */
+.required {
+    color: red;
+    font-weight: bold;
+}
+.output {
+    margin-top: 20px;
+}
+  
+.output output {
+    display: block;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+  
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    height: 1.5rem;
+
+}
+
+.illegal {
+    background-color: #ffcccc; 
+}
+  
+.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    height: 1.5rem;
+}
+
+.warning {
+    background-color: orange;
+}
+
+.error-message {
+    display: none;
+    background-color: red;
+    color: black;
+}
+
+.flash-error {
+    animation: flash 0.5s 3;
+}
+
+@keyframes flash {
+    0% { background-color: red; }
+    100% { background-color: white; }
+}
+/* Validity and validation styles */
+input:required:empty, textarea:required:empty {
+    border: 1px solid #ccc;
+}
+  
+input:valid, textarea:valid {
+    border-color: #4CAF50; /* Green border when valid */
+}
+  
+  
+/* Display placeholder styles */
+input:placeholder-shown, textarea:placeholder-shown {
+    border-color: #ccc; /* Light border when placeholder is shown */
+}
+  
+/* Highlight required fields */
+input:required:invalid, textarea:required:invalid {
+    background-color: #ffcccc; /* Light red background for invalid required fields */
+}
+  
+input[type="email"]:invalid {
+    background-color: #ffcccc; /* Light red background for invalid email */
+}
+/***************************************************************/
+
+header, nav {
+    margin: 0;
+    border: none; /* Remove any default borders */
+}
+/* Dark theme */
+[data-theme="dark"] {
+    --background-color: #333333;
+    --background-colorLighter: #727272;
+    --text-color: #E0E0E0;
+    --link-color: #FFCC00;
+    --button-color: color(display-p3 0.1 0.46 0.1);
+}
+[data-theme="dark"] #sun-icon {
+    display: none;
+}
+  
+[data-theme="dark"] #moon-icon {
+    display: inline;
+}
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#sun-icon {
+    display: inline;
+    width: 24px;
+    height: auto;
+}
+  
+#moon-icon {
+    display: none;
+}
+
+/* Increase the size of the icons */
+#sun-icon, #moon-icon {
+    font-size: 3rem; /* Adjust size as needed */
+    background-color: var(--primary-color); /* Background for the icons */
+    color: white;
+    margin: 0;
+    border: none;
+    outline: none;
+}
+
+#theme-toggle {
+    margin: 0;
+    border: none;
+    outline: none;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    margin-left: auto; /* Push the button to the far right */
+}
+
+  
+
+/* Base Styles (Desktop & Laptop) */
+header > nav {
+    display: flex;
+    /*justify-content: center;*/
+    justify-content: space-between; /* Distribute space between nav items */
+    align-items: center;
+    padding: 1rem 3rem;
+    background: var(--primary-color, darkblue);
+    color: white;
+  }
+  
+  
+.nav-links {
+    display: flex;
+    /*list-style: none;*/
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center the links within the nav */
+    flex-grow: 1; /* Allow the nav-links to take up available space */
+    list-style: none;
+}
+  
+.nav-links li {
+    margin-right: 20px;
+}
+
+  
+  /* Hamburger menu styles */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+.hamburger-menu span {
+    width: 40px;
+    height: 4px;
+    background-color: color-mix(in srgb, var(--button-color) 60%, var(--mix-color) 85%); /* Silvery */
+    border-radius: 5px;
+}
+  
+  /* Hide checkbox (but keep it functional) */
+.hamburger-toggle {
+    display: none;
+}
+
+
+  
+  /* Media Query for screens less than 480px */
+@media (max-width: 480px) {
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.4rem;
+    }
+/* Hide the regular navigation links on small screens */
+.nav-links {
+    display: none;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 60px; /* Adjust based on header height */
+    left: 0;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Show the hamburger menu */
+.hamburger-menu {
+    display: flex;
+}
+
+/* Show the menu when the checkbox is checked */
+.hamburger-toggle:checked + .hamburger-menu + .nav-links {
+    display: block;
+}
+}
+
+  
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 0 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.2rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 0.8fr 1.6fr 1fr;  /* Two columns for text and image */
+    align-items: center; /* Centers vertically */
+}
+
+.headshot {
+    margin: 0rem 2rem;
+    width: 100%;         /* Ensures responsiveness */
+    max-width: 250px;    /* Prevents the image from being too large */
+    height: auto;        /* Maintains aspect ratio */
+}
+.about-text {
+    font-size: 1.4rem; /* Larger text */
+    line-height: 1.4; /* More space between lines */
+    letter-spacing: 0.5px; /* Slight spacing for better readability */
+    color: var(--text-color);
+    font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
+    text-align: left; /* Center the text */
+    margin: 20px 0; /* Add spacing around the text */
+}
+
+.about-text em {
+    font-style: italic; /* Italicize the emphasized text */
+    font-weight: bold; /* Bold for extra emphasis */
+    color: var(--text-emphasis,coral); /* A cool color for emphasis */
+}
+
+
+.sidebar {
+    background-color: var(--background-color); /* Light background color */
+    padding: 1.5rem; /* Adequate padding for readability */
+    margin: 1rem 1rem; /* Margin to separate from other content */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    font-family: 'Arial', sans-serif; /* Choose a readable, modern font */
+    color: var(--text-color); /* Dark text color for contrast */
+    max-width: 300px; /* Maximum width for the sidebar */
+    flex-shrink: 0; /* Prevents shrinking in a flex layout */
+}
+  
+/* Heading styles for emphasis */
+.sidebar h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 0.5rem; /* Space below the heading */
+}
+  
+  /* Paragraph styling */
+.sidebar p {
+    font-size: 1rem; /* Normal font size */
+    line-height: 1.5; /* Adequate line spacing for readability */
+    margin-bottom: 1rem; /* Space below the paragraph */
+    
+}
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+  
+section {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.about-section {
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    background-color: var(--background-color); /* Light background for the section */
+    padding: 2rem; /* Generous padding around content */
+    /*border: 1px dashed var(--text-color);*/
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 2rem 0; /* Space between sections */
+}
+  
+
+  
+.about-section details {
+    background-color: var(--background-color); /* White background for the details */
+    border-radius: 5px; /* Rounded corners for each details element */
+    border: 1px solid var(--text-color);
+    padding: 1rem; /* Padding inside the details */
+    margin-bottom: 1rem; /* Space between each details block */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    
+}
+  
+.about-section details summary {
+    font-size: 1.3rem; /* Bigger font size for the summary */
+    font-weight: bold;
+    cursor: pointer; /* Make the summary clickable */
+    color: var(--text-color); /* Dark color for the summary */
+}
+  
+.about-section details p {
+    font-size: 1rem; /* Normal font size for the paragraph */
+    line-height: 1.6; /* Increased line height for readability */
+    color: var(--text-color); /* Lighter text for paragraph */
+}
+  
+.about-section details[open] summary {
+    color: var(--text-emphasis,coral); /* Change color when details is open */
+}
+  
+.about-section details[open] p {
+    margin-top: 1rem; /* Add some space when paragraph appears */
+}
+  
+h2 {
+    text-align: center;           /* Centers the text horizontally */
+    font-size: 2rem;              /* Makes the font larger for emphasis */
+    font-weight: bold;            /* Makes the text bold */
+    margin: 0 0;               /* Adds space above and below the heading */
+    padding: 1rem;                /* Adds padding for extra spacing */
+}
+hgroup > p {
+    text-align: center;           /* Centers the text horizontally */
+    font-size: 1.5rem;              /* Makes the font larger for emphasis */
+    margin: 0 0;
+    font-weight: normal;
+}
+
+footer p {
+    background-color: var(--primary-color, darkblue); /* Dark background for the footer */
+    color: #fff; /* White text for contrast */
+    padding: 1.5rem 0; /* Vertical padding for spacing */
+    text-align: center; /* Center the text */
+    font-size: 1.2rem; /* Larger font size for readability */
+    /*border-top: 3px solid var(--text-emphasis,coral); /* Optional: add a thin border to separate from content */
+    margin-top: 2rem; /* Space between footer and the content above */
+    margin: 0; /* Remove default margin */
+}
+img, video {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;      /* Ensures the image doesn't overflow the container */
+    height: auto;         /* Maintains the aspect ratio of the image */
+}
+
+li {
+    margin-bottom: 0.7rem;
+}
+dl {
+    position: sticky;            /* Allows it to be placed at the bottom of the section */
+    background-color: #fef8c2;     /* Light yellow background to simulate a sticky note */
+    padding: 1rem;                 /* Padding for the sticky note content */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.1);  /* Adds a subtle shadow */
+    border-radius: 8px;            /* Rounded corners for the sticky note */
+    max-width: 300px;              /* Limits the width of the sticky note */
+    width: 100%;                   /* Makes the sticky note width responsive */
+    margin: 0 auto;                /* Centers the sticky note horizontally */
+  }
+  
+  dt {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  
+  dd {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  dd, dt {
+    color: black;
+  }
+/* Optional: For smaller screen adjustments (e.g., stack vertically on phones) */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center; /* Centers the image and text when stacked */
+        gap: 1.2rem;
+    }
+
+    .headshot {
+        max-width: 220px;  /* Smaller size on mobile */
+        margin: 0rem 1rem;
+    }
+
+    .sidebar {
+        max-width: 100%; /* Full width on smaller screens */
+        margin: 0rem; /* Adjust margin for smaller devices */
+        padding: 0.75rem;
+    }
+    .about-section {
+        padding: 1.5rem; /* Slightly smaller padding on smaller screens */
+    }
+    
+    .about-content {
+        display: flex;
+        align-items: center; /* Centers vertically */
+        gap: 3rem; /* Space between the image and text */
+    }
+    
+    .about-section h3 {
+        font-size: 1.5rem; /* Slightly smaller heading on smaller screens */
+    }
+    
+    .about-section blockquote {
+        font-size: 1rem; /* Smaller quote text */
+    }
+    
+    .about-section details summary {
+        font-size: 1.2rem; /* Smaller font for the summary */
+    }
+    
+    footer p {
+        font-size: 1rem; /* Smaller font size on mobile devices */
+        padding: 1rem 0; /* Less padding on mobile */
+    }
+}
+ol {
+    font-size: large;
+  }
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+}
+  
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.2rem;
+}
+  
+th {
+    background-color: var(--background-color);
+    font-size: xx-large;
+    font-weight: bold;
+}
+  
+td {
+    background-color: var(--background-color);
+}
+  
+caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+  
+colgroup col:nth-child(1) {
+    width: 17%;
+}
+  
+colgroup col:nth-child(2) {
+    width: 80%;
+}
+  
+.resume {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0077B5;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  margin: 1rem auto;
+  position: sticky;
+  left: 45%;
+}
+
+dialog {
+    text-align: center;      /* Centers the inline content (the button) */
+    margin: 0rem auto;          /* This centers the button horizontally */
+    font-size: large;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+dialog button {
+    padding: 10px 10px;      /* Optional: for better button appearance */
+}
+
+p > strong {
+    font-size: 1.2rem;
+}
+
+fieldset {
+    margin: 2rem 2rem;
+    padding: 1rem 1rem;
+}
+
+/* Form container */
+form {
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border: 0.1rem dashed var(--text-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+  
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+  
+legend {
+    font-size: 1.5rem;
+    font-weight: bold;
+    /*color: var(--primary-color, blue);*/
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+  
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--background-colorLighter);
+}
+  
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color, darkblue);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+  
+textarea {
+    resize: vertical;
+    min-height: 150px;
+    
+}
+  
+form button {
+    background-color: var(--button-color, blue);
+    color: var(--text-color);
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    transition: color 0.3s ease-in-out;
+}
+  
+button:hover {
+    background-color: #a173dd;
+}
+
+  
+select {
+    color: var(--text-color);
+    background-color: var(--background-colorLighter);
+}
+
+.nav-links li:has(a[href="index.html"]:hover),
+.nav-links li:has(a[href="index.html"]:focus) {
+    transform: scale(1.2);
+}
+  
+.nav-links li:has(a[href="portfolio.html"]:hover),
+.nav-links li:has(a[href="portfolio.html"]:focus) {
+    transform: scale(1.2);
+}
+  
+.nav-links li:has(a[href="info.html"]:hover),
+.nav-links li:has(a[href="info.html"]:focus) {
+    transform: scale(1.2);
+}
+  
+.nav-links li:has(a[href="labs.html"]:hover),
+.nav-links li:has(a[href="labs.html"]:focus) {
+    transform: scale(1.2);
+}
+  
+.nav-links li:has(a[href="contact.html"]:hover),
+.nav-links li:has(a[href="contact.html"]:focus) {
+    transform: scale(1.2);
+}
+  
+
+  /* Responsive styling for mobile */
+  @media (max-width: 480px) {
+    form {
+      padding: 15px;
+    }
+  
+    label {
+      font-size: 0.9rem;
+    }
+  
+    input, textarea, select {
+      font-size: 1rem;
+    }
+    .resume {
+        left: 15%;
+      }
+  }
+  
+.contact-methods {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* CUSTOM ELEMENT */
+fancy-card {
+    animation: fadeIn 1.0s ease-out;
+    display: block;
+    border: 2px solid currentColor;
+    padding: 1.5rem;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 1rem auto;
+    background: var(--background-color);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+fancy-card header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+fancy-card ul {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    text-align: center;
+    list-style-position: inside;
+}
+
+fancy-card footer {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--text-emphasis, magenta);
+}
+/* Mobile-friendly layout */
+@media (max-width: 768px) {
+    fancy-card {
+        max-width: 95vw;
+        padding: 5vh 6vw;
+    }
+    fancy-card p {
+        max-width: 90%;
+    }
+}
+
+/* Larger screen optimizations */
+@media (min-width: 1024px) {
+    fancy-card {
+        max-width: 50vw;
+        padding: 4vh 5vw;
+    }
+}
