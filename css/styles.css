@@ -535,7 +535,7 @@ colgroup col:nth-child(2) {
   display: inline-block;
   padding: 10px 20px;
   background-color: #0077B5;
-  color: var(--text-color);
+  color: white;
   text-decoration: none;
   font-size: 1rem;
   border-radius: 5px;
@@ -692,6 +692,45 @@ select {
     margin: 0 auto;
     text-align: center;
 }
+
+.loadData {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+/* SETUP DATA LOADING CSS */
+
+#load-local-btn, #load-remote-btn, #unload-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Green */
+    color: var(--text-color);
+    cursor: pointer;
+    margin: 10px 2rem;
+    transition: background-color 0.3s ease;
+    align-items: center;
+}
+
+#load-local-btn:hover, #load-remote-btn:hover {
+    background-color: #0c6e11; /* Darker green on hover */
+}
+
+#load-local-btn:focus, #load-remote-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px #4CAF50;
+}
+
+#unload-btn {
+    background-color: #ff8080; /* Red */
+}
+
+#unload-btn:hover {
+    background-color: #ff0000; /* Darker red on hover */
+}
+/* SETUP DATA LOADING CSS */
 
 /* CUSTOM ELEMENT */
 fancy-card {
