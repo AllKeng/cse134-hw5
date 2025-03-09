@@ -7,6 +7,8 @@
      <!-- Placeholder for the external CSS file -->
      <link rel="stylesheet" href="css/styles.css"> 
      <script src="scripts/theme-toggle.js" defer> </script>
+     <script type="module" src="scripts/project-card.js" defer></script>
+
 </head>
 <body>
   <header>
@@ -48,55 +50,34 @@
             <h2>List of Projects</h2>
             <p>These are projects I have collaborated. </p>
           </hgroup>
-          <fancy-card>
-            <header>Snowboard Support System</header>
-            <!-- Picture Element: Responsive Images -->
-            <picture>
-                <source srcset="media/BoardView.png" media="(min-width: 1024px)" >
-                <!-- Medium image for tablets -->
-                <source srcset="media/BoardView-tablet.png" media="(min-width: 768px)" >
-                
-                <!-- Small image for mobile -->
-                <img src="media/BoardView-mobile.png" alt="TripleS Board">
-            </picture>
-            <ul>
-              <li>Arduino C for accelerometer data retrieval 
-                and bluetooth data transferring</li>
-              <li>KiCad for PCB design to integrate our ESP32, 
-                accelerometer, power supply, potentiometer, 
-                and buzzer in a compact manner.
-              </li>
-              <li>Python GUI to retrieve and display data via 
-                Bleak and Tkinter.
-              </li>
-              <li><a href="https://allkeng.github.io/Snowboard-Support-System/">Project website</a> 
-                using HTML, JS, CSS.</li>
-            </ul>
-            <footer>C, Python, Bluetooth Low Energy, HTML, JS, CSS</footer>
-          </fancy-card>
-
-          <fancy-card>
-            <header>Pantry Pals</header>
-            <!-- Video Element -->
-          <video controls>
-              <source src="media/pantrypalDemo.mp4" type="video/mp4">
-              Your browser does not support the video element.
-          </video>
-            <ul>
-              <li>Server setup to handle HTTP request for managing
-                recipes and user data with backend connectivity
-                to a MongoDB database.
-              </li>
-              <li>ChatGPT API used to generate recipes and images 
-                from user-provided ingredients.
-              </li>
-              <li>Java GUI to display recipe details, while 
-                following MVC Principles.
-              </li>
-              <li>Github Actions setup to run JUnit Test</li>
-            </ul>
-            <footer>Java, JUnit, JavaFX, ChatGPT API, RESTful API, MongoDB</footer>
-          </fancy-card>
+          <project-card
+            title="Snowboard Support System" 
+            imageDesktop="media/BoardView.png"
+            imageTablet="media/BoardView-tablet.png"
+            image="media/BoardView-mobile.png" 
+            alt="TripleS Board" 
+            description = "Arduino C for accelerometer data retrieval 
+            and bluetooth data transferring. / KiCad for PCB design to integrate our ESP32, 
+            accelerometer, power supply, potentiometer, 
+            and buzzer in a compact manner. / Python GUI to retrieve and display data via 
+            Bleak and Tkinter.";
+            link="https://allkeng.github.io/Snowboard-Support-System/"
+            linkMsg="Click here to more about it in my team's project website."
+            tags="C, Python, Bluetooth Low Energy, HTML, JS, CSS">
+        </project-card>
+        <project-card 
+            title="Pantry Pals" 
+            video="media/pantrypalDemo.mp4"
+            alt="Pantry Pals App" 
+            description="Server setup to handle HTTP request for managing
+            recipes and user data with backend connectivity
+            to a MongoDB database. / ChatGPT API used to generate recipes and images
+            from user-provided ingredients. / Java GUI to display recipe details, while
+            following MVC Principles. / Github Actions setup to run JUnit Test"
+            link="https://github.com/sprestrelski/pantrypal"
+            linkMsg="Click here to see the Github."
+            tags="Java, JavaFX, MongoDB, ChatGPT API">
+        </project-card>
         </section>
 
         <dl>
@@ -107,11 +88,6 @@
           <dd>Model View Controller</dd>
         </dl>
       </main>
-
-      <!-- Handy for Project Display -->
-      <template>
-        <p>Hidden content that can be cloned via JavaScript.</p>
-      </template>
 
       <!-- Footer -->
       <footer>
