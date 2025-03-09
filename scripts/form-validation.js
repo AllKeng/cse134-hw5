@@ -1,3 +1,9 @@
+/**
+ * This file sets up the contact form in my contact page.
+ * Client side verification is done via scripts and 
+ * checks are done for personal and user easability. 
+ */
+
 const form = document.getElementById('contact-form');
 const nameField = document.getElementById('name');
 const emailField = document.getElementById('email');

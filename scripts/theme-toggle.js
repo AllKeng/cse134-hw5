@@ -1,4 +1,8 @@
-// Function to toggle theme
+/**
+ * This file implements the dark and light mode for my website. 
+ * The script stores the state in localStorage to be preserved 
+ * upon another visit.  
+ */
 function toggleTheme() {
     const currentTheme = localStorage.getItem('theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -6,7 +10,7 @@ function toggleTheme() {
     // Set the new theme in localStorage and the data attribute
     localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
-    console.log("ran");
+    //console.log("ran");
     
     // Update the button icons based on the theme
     if (newTheme === 'dark') {

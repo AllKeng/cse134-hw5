@@ -1,3 +1,12 @@
+/**
+ * This file creates a Custom Element called ProjectCard.
+ * This element will serve as a template for the projects I wish to 
+ * display on my portfolio. 
+ * 
+ * Additionally, this file establishes local and remote fetching of 
+ * my projects to be displayed.  
+ */
+
 import { addGlobalStylesToShadowRoot } from "./global-styles.js";
 export class ProjectCard extends HTMLElement {
     constructor() {

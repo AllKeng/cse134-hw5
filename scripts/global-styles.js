@@ -1,3 +1,6 @@
+/**
+ * This file allows a ShadowDom to retrieve a global stylesheet and apply it to the ShadowDom. 
+ */
 let globalSheets = null;
 
 export function getGlobalStyleSheets() {
