@@ -752,7 +752,7 @@ project-card {
     display: block;
     border: 2px solid currentColor;
     padding: 0rem;
-    border-radius: 8px;
+    border-radius: 18px;
     max-width: 150vw;
     margin: 1rem auto;
     background: var(--background-color);
