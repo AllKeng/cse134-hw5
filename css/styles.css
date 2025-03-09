@@ -161,8 +161,27 @@ header > nav {
     padding: 1rem 3rem;
     background: var(--primary-color, darkblue);
     color: white;
-  }
-  
+}
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+main {
+    padding-top: 6rem; /* Adjust based on your header height */
+    padding-bottom: 6rem; /* Adjust based on your footer height */
+}
   
 .nav-links {
     display: flex;
@@ -208,32 +227,36 @@ header > nav {
   
   /* Media Query for screens less than 480px */
 @media (max-width: 480px) {
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-size: 1.4rem;
+    main {
+        padding-top: 6rem; /* Adjust based on your header height */
+        padding-bottom: 6rem; /* Adjust based on your footer height */
     }
-/* Hide the regular navigation links on small screens */
-.nav-links {
-    display: none;
-    width: 100%;
-    background-color: #fff;
-    position: absolute;
-    top: 60px; /* Adjust based on header height */
-    left: 0;
-    padding: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 1.4rem;
+    }
+    /* Hide the regular navigation links on small screens */
+    .nav-links {
+        display: none;
+        width: 100%;
+        background-color: #0c0269;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-/* Show the hamburger menu */
-.hamburger-menu {
-    display: flex;
-}
+    /* Show the hamburger menu */
+    .hamburger-menu {
+        display: flex;
+    }
 
-/* Show the menu when the checkbox is checked */
-.hamburger-toggle:checked + .hamburger-menu + .nav-links {
-    display: block;
-}
+    /* Show the menu when the checkbox is checked */
+    .hamburger-toggle:checked + .hamburger-menu + .nav-links {
+        display: block;
+    }
 }
 
   
@@ -268,6 +291,33 @@ nav ul li a {
 
     nav ul li {
         margin: 0.5rem 0;
+    }
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-color);
+        font-size: 1.4rem;
+    }
+    /* Hide the regular navigation links on small screens */
+    .nav-links {
+        display: none;
+        width: 100%;
+        background-color: #0c0269;
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Show the hamburger menu */
+    .hamburger-menu {
+        display: flex;
+        
+    }
+
+    /* Show the menu when the checkbox is checked */
+    .hamburger-toggle:checked + .hamburger-menu + .nav-links {
+        display: block;
     }
 }
 
@@ -341,6 +391,22 @@ nav ul li a {
   
 section {
     animation: fadeIn 0.6s ease-out;
+}
+main > h2 {
+    font-size: 2rem;
+    text-decoration: underline;
+}
+h2 + h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+section > h2 {
+    font-size: 1.6rem;
+}
+
+section > h2 + ol > li {
+    font-size: 1.4rem;
 }
 
 .about-section {
@@ -533,11 +599,11 @@ colgroup col:nth-child(2) {
   
 .resume {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 20px 20px;
   background-color: #0077B5;
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   text-align: center;
   margin: 1rem auto;
