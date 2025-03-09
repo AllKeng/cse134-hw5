@@ -31,7 +31,8 @@ export class ProjectCard extends HTMLElement {
             footer {
                 margin-top: 1rem;
                 text-align: center;
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                font-weight: bold;
                 font-style: italic;
                 color: var(--text-emphasis, #ff6347);
 }
@@ -56,7 +57,7 @@ export class ProjectCard extends HTMLElement {
                 <li> <a href="${link}" target="_blank">${linkMsg}</a> </li>
             </ul>
             <footer>
-                ${tags.map(tag => tag ? `${tag.trim()}` : '').join(',')}
+                ${tags.map(tag => tag ? `${tag.trim()}` : '').join(', ')}
             </footer>
         `;
         addGlobalStylesToShadowRoot(this.shadowRoot); // look here!
