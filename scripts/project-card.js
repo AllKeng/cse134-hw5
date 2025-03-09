@@ -79,16 +79,24 @@ async function loadLocalData() {
 
 async function loadRemoteData() {
     const container = document.getElementById('projects-container');
+    const apiKey = "$2a$10$XY1JU2eMbzryL4qtKP7fOeKU8hR4IiVPHE.v7WSbMtztt62t5qmVm";
+    const binId = '67ccf99cacd3cb34a8f7638a';
     try {
-        const response = await fetch('https://jsonbin.io/b/67ccf99cacd3cb34a8f7638a'); // Replace with your actual remote URL
+        const response = await fetch(`https://api.jsonbin.io/v3/b/${binId}`, {
+            method: 'GET',
+            headers: {
+              'X-Access-Key': apiKey, // Or X-Access-Key
+            }
+          }); // Replace with your actual remote URL
         if (!response.ok) {
             //console.log(response)
             // Check if the response is OK (status 200-299)
             throw new Error('Failed to fetch remote data');
         }
         
-        const projects = await response.json();
-
+        const data = await response.json();
+        const projects = data.record;
+        console.log(projects)
         // Check if there are any projects returned
         if (projects && projects.length > 0) {
             renderProjects(projects);
