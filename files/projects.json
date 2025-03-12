@@ -1,0 +1,35 @@
+[
+    {
+        "title": "Snowboard Support System",
+        "video": "",
+        "imageDesktop": "media/BoardView.png",
+        "imageTablet": "media/BoardView-tablet.png",
+        "image": "media/BoardView-mobile.png",
+        "alt": "TripleS Board",
+        "description": "Arduino C for accelerometer data retrieval and bluetooth data transferring. / KiCad for PCB design to integrate our ESP32, accelerometer, power supply, potentiometer, and buzzer in a compact manner. / Python GUI to retrieve and display data via Bleak and Tkinter.",
+        "link": "https://allkeng.github.io/Snowboard-Support-System/",
+        "linkMsg": "Click here to more about it in my team's project website.",
+        "tags": ["C", "Python", "Bluetooth Low Energy", "HTML", "JS", "CSS"]
+    },
+    {
+        "title": "Pantry Pals",
+        "video": "media/pantrypalDemo.mp4",
+        "alt": "Pantry Pals App",
+        "description": "Server setup to handle HTTP request for managing recipes and user data with backend connectivity to a MongoDB database. / ChatGPT API used to generate recipes and images from user-provided ingredients. / Java GUI to display recipe details, while following MVC Principles. / Github Actions setup to run JUnit Test",
+        "link": "https://github.com/sprestrelski/pantrypal",
+        "linkMsg": "Click here to see the Github.",
+        "tags": ["Java", "JavaFX", "MongoDB", "ChatGPT API"]
+    }, 
+    {
+        "title": "Asteroid Classification Machine Learning Report",
+        "video": "",
+        "imageDesktop": "media/mlStarsTable.png",
+        "imageTablet": "media/mlStarsTable.png",
+        "image": "media/mlStarsTable.png",
+        "alt": "Summary of our Dataset",
+        "description": "Established a predictive model that can accurately classify asteroids into predefined categories. / Preprocessed data using scaling, normalization, or one hot encoding. / Split data into training and testing data. / Used Linear Regression, Neural Network, and Naive Bayes models. / Observed the best model for our dataset via accuracy.",
+        "link": "https://github.com/kaijia2022/CSE151A-Project-Repo",
+        "linkMsg": "Click here to see the report on our findings in our Github.",
+        "tags": ["Python", "pandas", "seaborn", "matplotlib", "numpy", "tensorflow"]
+    }
+]

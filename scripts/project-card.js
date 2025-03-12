@@ -37,7 +37,7 @@ export class ProjectCard extends HTMLElement {
                 list-style-position: inside;
             }
 
-            footer {
+            h4 {
                 margin-top: 1rem;
                 text-align: center;
                 font-size: 1.2rem;
@@ -65,9 +65,9 @@ export class ProjectCard extends HTMLElement {
                 ${description.split(' / ').map(item => `<li>${item.trim()}</li>`).join('')}
                 <li> <a href="${link}" target="_blank">${linkMsg}</a> </li>
             </ul>
-            <footer>
+            <h4>
                 ${tags.map(tag => tag ? `${tag.trim()}` : '').join(', ')}
-            </footer>
+            </h4>
         `;
         addGlobalStylesToShadowRoot(this.shadowRoot); // look here!
     }
@@ -79,11 +79,32 @@ customElements.define('project-card', ProjectCard);
 async function loadLocalData() {
     const container = document.getElementById('projects-container');
     const storedProjects = localStorage.getItem('projects');
+    //console.log(storedProjects)
     if (storedProjects) {
         const projects = JSON.parse(storedProjects);
         renderProjects(projects);
+        console.log("from localStorage")
     } else {
-        alert('No data found in localStorage!');
+        try {
+            
+            // If no data in localStorage, fetch from the local JSON file
+            const response = await fetch('./files/projects.json'); // Fetch the local JSON file
+            if (!response.ok) {
+                throw new Error('Failed to load local data');
+            }
+            
+            const projects = await response.json(); // Parse the JSON response
+            
+            // Save fetched data to localStorage for future use
+            localStorage.setItem('projects', JSON.stringify(projects));
+            
+            // Render the fetched projects
+            renderProjects(projects);
+            console.log("from json file")
+        } catch (error) {
+            console.error('Error loading local data:', error);
+            alert('Failed to load local data. Please check the console for details.');
+        }
     }
 }
 
@@ -151,29 +172,29 @@ document.getElementById('load-local-btn').addEventListener('click', loadLocalDat
 document.getElementById('load-remote-btn').addEventListener('click', loadRemoteData);
 document.getElementById('unload-btn').addEventListener('click', unloadData);
 
-const exampleProjects = [
-    {
-        "title": "Snowboard Support System",
-        "video": '',
-        "imageDesktop": "media/BoardView.png",
-        "imageTablet": "media/BoardView-tablet.png",
-        "image": "media/BoardView-mobile.png",
-        "alt": "TripleS Board",
-        "description": "Arduino C for accelerometer data retrieval and bluetooth data transferring. / KiCad for PCB design to integrate our ESP32, accelerometer, power supply, potentiometer, and buzzer in a compact manner. / Python GUI to retrieve and display data via Bleak and Tkinter.",
-        "link": "https://allkeng.github.io/Snowboard-Support-System/",
-        "linkMsg": "Click here to more about it in my team's project website.",
-        "tags": ["C", "Python", "Bluetooth Low Energy", "HTML", "JS", "CSS"]
-    },
-    {
-        "title": "Pantry Pals",
-        "video": "media/pantrypalDemo.mp4",
-        "alt": "Pantry Pals App",
-        "description": "Server setup to handle HTTP request for managing recipes and user data with backend connectivity to a MongoDB database. / ChatGPT API used to generate recipes and images from user-provided ingredients. / Java GUI to display recipe details, while following MVC Principles. / Github Actions setup to run JUnit Test",
-        "link": "https://github.com/sprestrelski/pantrypal",
-        "linkMsg": "Click here to see the Github.",
-        "tags": ["Java", "JavaFX", "MongoDB", "ChatGPT API"]
-    }
-];
+// const exampleProjects = [
+//     {
+//         "title": "Snowboard Support System",
+//         "video": '',
+//         "imageDesktop": "media/BoardView.png",
+//         "imageTablet": "media/BoardView-tablet.png",
+//         "image": "media/BoardView-mobile.png",
+//         "alt": "TripleS Board",
+//         "description": "Arduino C for accelerometer data retrieval and bluetooth data transferring. / KiCad for PCB design to integrate our ESP32, accelerometer, power supply, potentiometer, and buzzer in a compact manner. / Python GUI to retrieve and display data via Bleak and Tkinter.",
+//         "link": "https://allkeng.github.io/Snowboard-Support-System/",
+//         "linkMsg": "Click here to more about it in my team's project website.",
+//         "tags": ["C", "Python", "Bluetooth Low Energy", "HTML", "JS", "CSS"]
+//     },
+//     {
+//         "title": "Pantry Pals",
+//         "video": "media/pantrypalDemo.mp4",
+//         "alt": "Pantry Pals App",
+//         "description": "Server setup to handle HTTP request for managing recipes and user data with backend connectivity to a MongoDB database. / ChatGPT API used to generate recipes and images from user-provided ingredients. / Java GUI to display recipe details, while following MVC Principles. / Github Actions setup to run JUnit Test",
+//         "link": "https://github.com/sprestrelski/pantrypal",
+//         "linkMsg": "Click here to see the Github.",
+//         "tags": ["Java", "JavaFX", "MongoDB", "ChatGPT API"]
+//     }
+// ];
 
 // Store in localStorage
-localStorage.setItem('projects', JSON.stringify(exampleProjects));
+//localStorage.setItem('projects', JSON.stringify(exampleProjects));
