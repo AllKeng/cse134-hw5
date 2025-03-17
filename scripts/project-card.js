@@ -16,17 +16,26 @@ export class ProjectCard extends HTMLElement {
     }
 
     connectedCallback() {
-        
-        let title = this.getAttribute('title') || 'Project Title';
+        let title = this.getAttribute('title') || 'Loading...';
         let videoSrc = this.getAttribute('video') || '';
-        let imageSrcDesktop = this.getAttribute('imageDesktop') || '';
-        let imageSrcTablet = this.getAttribute('imageTablet') || '';
-        let imageSrc = this.getAttribute('image') || '';
-        let altText = this.getAttribute('alt') || 'Project image';
-        let description = this.getAttribute('description') || 'Project description.';
+        let imageSrcDesktop = this.getAttribute('imageDesktop') || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" style="fill:#ccc;"></rect></svg>'; // Blank image placeholder
+        let imageSrcTablet = this.getAttribute('imageTablet') || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" style="fill:#ccc;"></rect></svg>'; // Blank image placeholder
+        let imageSrc = this.getAttribute('image') || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" style="fill:#ccc;"></rect></svg>'; // Blank image placeholder
+        let altText = this.getAttribute('alt') || 'Loading image...';
+        let description = this.getAttribute('description') || 'Loading description...';
         let link = this.getAttribute('link') || '#';
-        let linkMsg = this.getAttribute('linkMsg') || '';
+        let linkMsg = this.getAttribute('linkMsg') || 'Loading...';
         let tags = (this.getAttribute('tags') || '').split(',');
+        // let title = this.getAttribute('title') || 'Project Title';
+        // let videoSrc = this.getAttribute('video') || '';
+        // let imageSrcDesktop = this.getAttribute('imageDesktop') || '';
+        // let imageSrcTablet = this.getAttribute('imageTablet') || '';
+        // let imageSrc = this.getAttribute('image') || '';
+        // let altText = this.getAttribute('alt') || 'Project image';
+        // let description = this.getAttribute('description') || 'Project description.';
+        // let link = this.getAttribute('link') || '#';
+        // let linkMsg = this.getAttribute('linkMsg') || '';
+        // let tags = (this.getAttribute('tags') || '').split(',');
         //console.log(`VideoSrc: ${videoSrc} and imageSrc: ${imageSrc}`);
         this.shadowRoot.innerHTML = `
             <style>
@@ -165,6 +174,7 @@ function renderProjects(projects) {
 function unloadData() {
     const container = document.getElementById('projects-container');
     container.innerHTML = ''; // Clear the contents of the container
+    renderEmptyProjects(3);  // Show 5 empty cards initially
 }
 
 // Event listeners for the buttons
@@ -198,3 +208,29 @@ document.getElementById('unload-btn').addEventListener('click', unloadData);
 
 // Store in localStorage
 //localStorage.setItem('projects', JSON.stringify(exampleProjects));
+// Render empty project cards with placeholder values when the page first loads
+function renderEmptyProjects(num) {
+    const container = document.getElementById('projects-container');
+    container.innerHTML = ''; // Clear any existing cards
+
+    for (let i = 0; i < num; i++) {
+        const card = document.createElement('project-card');
+        card.setAttribute('title', 'Loading...');
+        card.setAttribute('video', ''); // Empty video source
+        card.setAttribute('imageDesktop','media/wah.png' );
+        card.setAttribute('imageTablet', 'media/wah.png');
+        card.setAttribute('image', 'media/wah.png');
+        card.setAttribute('alt', 'Loading image...');
+        card.setAttribute('description', 'Loading description...');
+        card.setAttribute('link', '#');
+        card.setAttribute('linkMsg', 'Loading...');
+        card.setAttribute('tags', 'Loading...');
+
+        container.appendChild(card);
+    }
+}
+
+// Call renderEmptyProjects with a number of empty cards to show initially
+document.addEventListener('DOMContentLoaded', () => {
+    renderEmptyProjects(3);  // Show 5 empty cards initially
+});
